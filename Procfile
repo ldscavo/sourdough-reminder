@@ -1,1 +1,1 @@
-notify: sourdough
+notify: ./sourdough
