@@ -7,17 +7,26 @@ proc post(url: string, body: JsonNode): void =
   let client = newHttpClient()
   client.headers = newHttpHeaders({ "Content-Type": "application/json" })
   
-  discard client.request(
+  echo fmt"Sending the request to {url}"
+  echo fmt"body: {$body}"
+  let response = client.request(
     url,
     httpMethod = HttpPost,
     body = $body
-  )  
+  )
+  
+  if response.status == "200":
+    echo "Successfully sent request!"
+  else:
+    echo "Something went wrong"
+    echo fmt"Response: {response.body}"
+    
   client.close()
 
 proc sendText(number: string, message: string): void =
   post(os.getEnv("TILL_URL"), %*{
     "phone": [number],
-    "test": message
+    "text": message
   })
 
 when isMainModule:
