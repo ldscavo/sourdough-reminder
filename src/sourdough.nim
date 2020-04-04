@@ -32,5 +32,10 @@ proc sendText(number: string, message: string): void =
 when isMainModule:
   let name = os.getEnv("NAME")
   let phoneNumber = os.getEnv("PHONE_NUMBER")
+  
+  let message =
+    fmt"""Hey, {name}, it's time to feed your starter! 🍞
+    
+Remove all but 4 oz of the starter and add 4oz of flour and ½ cup of lukewarm water!"""
 
-  sendText(phoneNumber, fmt"Hello, {name}")
+  sendText(phoneNumber, message)
