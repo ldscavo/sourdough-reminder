@@ -3,19 +3,22 @@ import strformat
 import json
 import httpclient
 
-proc sendText(number: string, message: string): void =
+proc post(url: string, body: JsonNode): void =
   let client = newHttpClient()
   client.headers = newHttpHeaders({ "Content-Type": "application/json" })
-  let body = %*{
-    "phone": [number],
-    "test": message
-  }
-  let response = client.request(
-    os.getEnv("TILL_URL"),
+  
+  discard client.request(
+    url,
     httpMethod = HttpPost,
     body = $body
-  )
-  echo response.status
+  )  
+  client.close()
+
+proc sendText(number: string, message: string): void =
+  post(os.getEnv("TILL_URL"), %*{
+    "phone": [number],
+    "test": message
+  })
 
 when isMainModule:
   let name = os.getEnv("NAME")
