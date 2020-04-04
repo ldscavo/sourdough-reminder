@@ -7,4 +7,4 @@ srcDir        = "src"
 bin           = "sourdough"
 
 [Deps]
-requires "nim >= 1.2.0, dotenv >= 1.1.1"
+requires "nim >= 1.2.0", "dotenv >= 1.1.1"
