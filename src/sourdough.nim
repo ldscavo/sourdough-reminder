@@ -8,14 +8,14 @@ proc post(url: string, body: JsonNode): void =
   client.headers = newHttpHeaders({ "Content-Type": "application/json" })
   
   echo fmt"Sending the request to {url}"
-  echo fmt"body: {$body}"
+  
   let response = client.request(
     url,
     httpMethod = HttpPost,
     body = $body
   )
   
-  if response.status == "200":
+  if response.code == Http200:
     echo "Successfully sent request!"
   else:
     echo "Something went wrong"
