@@ -5,7 +5,7 @@ author        = "ldscavo"
 description   = "Test project do not eat"
 license       = "MIT"
 srcDir        = "src"
-bin           = @["nim_playground"]
+bin           = @["sourdough"]
 
 
 

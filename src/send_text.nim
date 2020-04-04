@@ -1,2 +1,4 @@
+import strformat
+
 proc sendText*(number: string, message: string): void =
-  echo "Send a text"
+  echo fmt"Sent '{message}' to {number}"
