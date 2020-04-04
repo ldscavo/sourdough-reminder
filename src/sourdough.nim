@@ -1,9 +1,5 @@
 import send_text
-import dotenv
 import os
-
-let env = initDotEnv()
-env.load()
 
 when isMainModule:
   echo os.getEnv("NAME")
